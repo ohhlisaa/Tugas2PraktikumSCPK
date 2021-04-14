@@ -1,0 +1,76 @@
+[System]
+Name='Tugas2PraktikumSCPK'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=3
+NumRules=14
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='TingkatKesulitan'
+Range=[0 10]
+NumMFs=3
+MF1='Mudah':'gaussmf',[1.769 -2.776e-17]
+MF2='Sedang':'gaussmf',[1.769 5]
+MF3='Sult':'gaussmf',[1.769 10]
+
+[Input2]
+Name='WaktuPengerjaan'
+Range=[0 10]
+NumMFs=3
+MF1='Lama':'gaussmf',[1.769 -2.776e-17]
+MF2='Cepat':'gaussmf',[1.769 5]
+MF3='SangatCepat':'gaussmf',[1.771 10]
+
+[Input3]
+Name='KualitasPekerjaan'
+Range=[0 10]
+NumMFs=3
+MF1='Buruk':'gaussmf',[1.769 -2.776e-17]
+MF2='Baik':'gaussmf',[1.769 5]
+MF3='SangatBaik':'gaussmf',[1.771 10]
+
+[Output1]
+Name='Status'
+Range=[0 30]
+NumMFs=3
+MF1='Diberhentikan':'trimf',[0 5 10]
+MF2='Tetap':'trimf',[10 15 20]
+MF3='NaikPangkat':'trimf',[20 25 30]
+
+[Output2]
+Name='Bonus'
+Range=[0 30]
+NumMFs=3
+MF1='Sedikit':'trimf',[20 25 30]
+MF2='Sedang':'trimf',[10 15 20]
+MF3='Banyak':'trimf',[0 5 10]
+
+[Output3]
+Name='HariLibur'
+Range=[0 30]
+NumMFs=3
+MF1='Berkurang':'trimf',[0 5 10]
+MF2='Tetap':'trimf',[10 15 20]
+MF3='Bertambah':'trimf',[20 25 30]
+
+[Rules]
+1 1 1, 1 0 0 (1) : 1
+1 2 2, 2 2 2 (1) : 1
+1 3 3, 2 2 3 (1) : 1
+2 1 2, 2 1 1 (1) : 1
+2 2 2, 2 2 2 (1) : 1
+2 3 2, 2 3 3 (1) : 1
+2 2 3, 2 3 2 (1) : 1
+3 2 2, 2 3 2 (1) : 1
+3 3 2, 2 3 3 (1) : 1
+3 3 3, 3 3 3 (1) : 1
+0 0 1, 1 0 0 (1) : 1
+0 0 3, 0 3 0 (1) : 1
+0 3 0, 0 0 3 (1) : 1
+0 1 0, 0 0 1 (1) : 1
